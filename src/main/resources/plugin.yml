@@ -1,0 +1,50 @@
+name: LobbyManager
+version: 1.0.0
+description: Server lobby manager(need BungeeCord)
+load: POSTWORLD
+author: Siro_256
+website: https://github.com/Siro256
+main: dev.siro256.spigotpl.lobbymanager.LobbyManager
+database: false
+prefix: LobbyManager
+
+commands:
+  /wand:
+    description: Give you the wand.
+    permission: lobbymanager.command.wand
+    permission-message: You don't allowed to execute this command.
+  gate:
+    description: Management for server gate.
+    permission: lobbymanager.command.gate
+    permission-message: You don't allowed to execute this command.
+
+permissions:
+  # Permission groups
+  lobbymanager.*:
+    description: All permissions allowed.
+    default: false
+    children:
+      lobbymanager.command.*: true
+
+  lobbymanager.admin:
+    description: Administrator permission.
+    default: op
+    children:
+      lobbymanager.command.wand: true
+      lobbymanager.command.gate: true
+
+  # Commands permission
+  lobbymanager.command.*:
+    description: All commands allwed.
+    default: false
+    children:
+      lobbymanager.command.test: true
+      lobbymanager.command.gate: true
+
+  lobbymanager.command.wand:
+    description: Give you the wand.
+    default: false
+
+  lobbymanager.command.gate:
+    description: Management for server gate.
+    default: false
